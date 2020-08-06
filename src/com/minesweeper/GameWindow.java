@@ -2,6 +2,7 @@ package com.minesweeper;
 
 import java.awt.Dimension;
 
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -36,6 +37,18 @@ public class GameWindow extends JFrame{
 	}
 	
 	private void addComponents() {
+		GroupLayout layout = new GroupLayout(this.getContentPane());
+		setLayout(layout);
+		
+		/*
+		 * settings panel
+		 * 		Difficulty
+		 * 		restart
+		 * 		timer
+		 * 
+		 * game panel
+		 */
+		
 		
 	}
 }
