@@ -1,8 +1,12 @@
+package com.minesweeper;
 
 public class Main {
-	
 	public static void main(String[] args) {
-		System.out.println("Ethan is a King");
+		//Create game window
+		
+		//Initialize game loop
+		
+		//start game loop
 		
 	}
 }
