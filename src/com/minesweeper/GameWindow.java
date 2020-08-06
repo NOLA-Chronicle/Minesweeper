@@ -25,7 +25,7 @@ public class GameWindow extends JFrame{
 		
 		content.setPreferredSize(canvas);
 		
-		addComponents();
+		addComponents(content);
 		
 		pack();
 		setResizable(false);
@@ -36,7 +36,7 @@ public class GameWindow extends JFrame{
 		validate();
 	}
 	
-	private void addComponents() {
+	private void addComponents(JPanel parentPanel) {
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 		setLayout(layout);
 		
@@ -45,7 +45,7 @@ public class GameWindow extends JFrame{
 		 * 		Difficulty
 		 * 		restart
 		 * 		timer
-		 * 		yes
+		 * 		no
 		 * game panel
 		 */
 		
