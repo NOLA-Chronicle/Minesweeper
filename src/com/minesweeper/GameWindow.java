@@ -2,6 +2,7 @@ package com.minesweeper;
 
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,21 +12,22 @@ public class GameWindow extends JFrame{
 	private int rows;
 	private int cols;
 	private int cellSize;
+	private int WIDTH;
+	private int HEIGHT;
 	
 	public GameWindow(int w, int h, int cellSize) {
 		rows = h;
 		cols = w;
 		this.cellSize = cellSize;
+		WIDTH = cellSize * cols;
+		HEIGHT = cellSize * rows;
 		
 		setTitle("Minesweeper");
 		
 		//width x height
-		Dimension canvas = new Dimension(cellSize * cols, cellSize * rows);
-		JPanel content = (JPanel) getContentPane();
+		Dimension canvas = new Dimension(WIDTH, HEIGHT);
 		
-		content.setPreferredSize(canvas);
-		
-		addComponents(content);
+		addComponents(canvas);
 		
 		pack();
 		setResizable(false);
@@ -36,19 +38,36 @@ public class GameWindow extends JFrame{
 		validate();
 	}
 	
-	private void addComponents(JPanel parentPanel) {
+	private void addComponents(Dimension canvas) {
+		//make panel
+		//set panel size
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 		setLayout(layout);
+		layout.setAutoCreateContainerGaps(true);
+		layout.setAutoCreateGaps(true);
 		
 		/*
 		 * settings panel
 		 * 		Difficulty
 		 * 		restart
 		 * 		timer
-		 * 		maybe
+		 * 		
 		 * game panel
 		 */
 		
+		GameArea gamePanel = new GameArea(canvas);
+		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
+		
+		layout.setHorizontalGroup(
+			layout.createSequentialGroup().addGroup(layout.createParallelGroup()
+				
+				.addComponent(gamePanel))
+		);
+		
+		layout.setVerticalGroup(
+			layout.createSequentialGroup()
+				.addComponent(gamePanel)
+		);
 		
 	}
 }
