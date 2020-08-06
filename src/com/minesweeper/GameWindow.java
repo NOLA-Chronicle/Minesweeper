@@ -45,7 +45,7 @@ public class GameWindow extends JFrame{
 		 * 		Difficulty
 		 * 		restart
 		 * 		timer
-		 * 		no
+		 * 		maybe
 		 * game panel
 		 */
 		
