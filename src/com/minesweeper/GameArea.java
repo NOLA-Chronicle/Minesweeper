@@ -9,10 +9,20 @@ import javax.swing.JPanel;
 
 public class GameArea extends JPanel{
 	private static final long serialVersionUID = 1054946573756805525L;
+	private Dimension dim;
+	private int cols;
+	private int rows;
+	private int cellSize;
 	
-	public GameArea(Dimension size) {
-		setPreferredSize(size);
+	private Minefield field;
+	
+	public GameArea(Dimension size, int c, int r, int cellSize) {
+		dim = size;
+		setPreferredSize(dim);
 		
+		this.cols = c;
+		this.rows = r;
+		this.cellSize = cellSize;
 		
 	}
 	
@@ -23,14 +33,14 @@ public class GameArea extends JPanel{
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g2.setColor(Color.LIGHT_GRAY);
-		g2.fillRect(0, 0, this.getWidth(), this.getHeight());
+		g2.fillRect(0, 0, dim.width, dim.height);
 		
 		g2.setColor(Color.BLACK);
-		for(int r = 0; r < 25; r++) {
-			g2.drawLine(0, r*20, this.getWidth(), r*20);
+		for(int r = 0; r < rows; r++) {
+			g2.drawLine(0, r*cellSize, dim.width, r*cellSize);
 		}
-		for(int c = 0; c < 50; c++) {
-			g2.drawLine(c*20, 0, c*20, this.getHeight());
+		for(int c = 0; c < cols; c++) {
+			g2.drawLine(c*cellSize, 0, c*cellSize, dim.height);
 		}
 	}
 }

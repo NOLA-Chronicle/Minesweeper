@@ -17,8 +17,8 @@ public class GameWindow extends JFrame{
 	private int HEIGHT;
 	
 	public GameWindow(int w, int h, int cellSize) {
-		rows = h;
 		cols = w;
+		rows = h;
 		this.cellSize = cellSize;
 		WIDTH = cellSize * cols;
 		HEIGHT = cellSize * rows;
@@ -54,10 +54,14 @@ public class GameWindow extends JFrame{
 		 * game panel
 		 */
 		
+<<<<<<< HEAD
 		SettingsPanel settings = new SettingsPanel(WIDTH, (int)(HEIGHT * .15));
 		settings.setBorder(BorderFactory.createRaisedBevelBorder());
 		
 		GameArea gamePanel = new GameArea(canvas);
+=======
+		GameArea gamePanel = new GameArea(canvas, cols, rows, cellSize);
+>>>>>>> branch 'development' of https://github.com/NOLA-Chronicle/Minesweeper
 		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
 		
 		layout.setHorizontalGroup(
