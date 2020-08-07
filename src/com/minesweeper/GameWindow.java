@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -39,8 +40,6 @@ public class GameWindow extends JFrame{
 	}
 	
 	private void addComponents(Dimension canvas) {
-		//make panel
-		//set panel size
 		GroupLayout layout = new GroupLayout(this.getContentPane());
 		setLayout(layout);
 		layout.setAutoCreateContainerGaps(true);
@@ -55,19 +54,22 @@ public class GameWindow extends JFrame{
 		 * game panel
 		 */
 		
+		SettingsPanel settings = new SettingsPanel(WIDTH, (int)(HEIGHT * .15));
+		settings.setBorder(BorderFactory.createRaisedBevelBorder());
+		
 		GameArea gamePanel = new GameArea(canvas);
 		gamePanel.setBorder(BorderFactory.createRaisedBevelBorder());
 		
 		layout.setHorizontalGroup(
 			layout.createSequentialGroup().addGroup(layout.createParallelGroup()
-				
+				.addComponent(settings)
 				.addComponent(gamePanel))
 		);
 		
 		layout.setVerticalGroup(
 			layout.createSequentialGroup()
+				.addComponent(settings)
 				.addComponent(gamePanel)
 		);
-		
 	}
 }
