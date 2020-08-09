@@ -1,23 +1,27 @@
 package com.minesweeper;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class SettingsPanel extends JPanel {
+public class SettingsPanel extends JPanel implements ActionListener{
+	
+	private static final long serialVersionUID = 6009903486855646095L;
+	JButton changeButton = new JButton("Change");
+	JComboBox<String> difficulty = new JComboBox<String>();
 
 	public SettingsPanel(int w, int h) {
 		setPreferredSize(new Dimension(w, h));
 		
-		JComboBox<String> difficulty = new JComboBox<String>();
 		difficulty.addItem("Easy");
 		difficulty.addItem("Medium");
 		difficulty.addItem("Hard");
-		
-		JButton changeButton = new JButton("Change");
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -35,5 +39,26 @@ public class SettingsPanel extends JPanel {
 					.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 			);
+		
+		changeButton.addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent event) {
+		getDifficulty();
+		JOptionPane.showMessageDialog(null, String.format(Float.toString(getDifficulty()), event.getActionCommand()));
+	}
+	
+	public float getDifficulty() {
+		float difficultyNum = 0.50f;
+		
+		if (difficulty.getSelectedItem().toString() == "Easy") {
+			difficultyNum = 0.50f;
+		} else if(difficulty.getSelectedItem().toString() == "Medium") {
+			difficultyNum = 0.25f;
+		} else {
+			difficultyNum = 0.125f;
+		}
+		
+		return difficultyNum;
 	}
 }
